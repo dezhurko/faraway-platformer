@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &477253838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2206473321830080061, guid: fa591338fd3e6464cadaf4f4c8fda4ff, type: 3}
+  m_PrefabInstance: {fileID: 8664028874668515945}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1629590326668832470
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -192,6 +197,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 2170917056357625607, guid: 18c891b113b17b845a7428caebaadb2e, type: 3}
+      propertyPath: lerp
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2170917056357625607, guid: 18c891b113b17b845a7428caebaadb2e, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 477253838}
+    - target: {fileID: 2170917056357625607, guid: 18c891b113b17b845a7428caebaadb2e, type: 3}
+      propertyPath: targetTransform
+      value: 
+      objectReference: {fileID: 477253838}
     - target: {fileID: 6781563054416512458, guid: 18c891b113b17b845a7428caebaadb2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -302,10 +319,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2206473321830080061, guid: fa591338fd3e6464cadaf4f4c8fda4ff, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 2206473321830080061, guid: fa591338fd3e6464cadaf4f4c8fda4ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.3027635
