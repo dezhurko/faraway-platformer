@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Faraway.Pixel
+namespace Faraway.Pixel.Actors
 {
-    public class CameraController : MonoBehaviour
+    public class CameraActor : MonoBehaviour
     {
         [SerializeField]
         private Transform targetTransform;

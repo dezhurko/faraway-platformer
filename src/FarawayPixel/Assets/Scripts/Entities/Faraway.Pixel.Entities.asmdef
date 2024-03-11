@@ -1,0 +1,14 @@
+{
+    "name": "Faraway.Pixel.Entities",
+    "rootNamespace": "Faraway.Pixel",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
