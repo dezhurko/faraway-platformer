@@ -31,7 +31,7 @@ namespace Faraway.Pixel.Entities.Locomotion
             var isGrounded = Actor.IsGrounded();
             if (isGrounded && input.Jump)
             {
-                Actor.Velocity = new Vector2(Actor.Velocity.x, JumpForce * LocomotionParameters.SpeedFactor);
+                Actor.Velocity = new Vector2(Actor.Velocity.x, JumpForce * LocomotionParameters.JumpFactor);
             }
         }
     }

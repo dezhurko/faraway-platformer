@@ -1,4 +1,6 @@
-﻿namespace Faraway.Pixel.Entities
+﻿using UnityEngine;
+
+namespace Faraway.Pixel.Entities
 {
     /// <summary>
     /// Represents the locomotion parameters.
@@ -16,7 +18,12 @@
         /// Gets the speed factor.
         /// </summary>
         public float SpeedFactor => speedFactor;
-        
+
+        /// <summary>
+        /// Gets the jump force factor.
+        /// </summary>
+        public float JumpFactor => 1f + (speedFactor - 1f) / 2f;
+
         /// <summary>
         /// Changes the speed factor.
         /// </summary>
