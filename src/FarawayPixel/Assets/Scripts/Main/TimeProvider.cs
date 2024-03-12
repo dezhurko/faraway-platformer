@@ -1,7 +1,7 @@
 using Faraway.Pixel.Entities;
 using UnityEngine;
 
-namespace Faraway.Pixel.Controllers
+namespace Faraway.Pixel.Main
 {
     public class TimeProvider : ITimeProvider
     {

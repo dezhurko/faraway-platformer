@@ -4,12 +4,14 @@ namespace Faraway.Pixel.Entities.Locomotion
     {
         protected ILocomotionActor Actor { get; }
         
-        protected ISpeedFactorProvider SpeedFactorProvider { get; }
+        protected LocomotionParameters LocomotionParameters { get; }
 
-        protected LocomotionSystem(ILocomotionActor actor, ISpeedFactorProvider speedFactorProvider)
+        public abstract LocomotionActorState ActorState { get; }
+
+        protected LocomotionSystem(ILocomotionActor actor, LocomotionParameters locomotionParameters)
         { 
             Actor = actor;
-            SpeedFactorProvider = speedFactorProvider;
+            LocomotionParameters = locomotionParameters;
         }
 
         public abstract void Update(UserInput input);

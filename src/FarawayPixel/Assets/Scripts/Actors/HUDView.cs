@@ -1,9 +1,10 @@
-﻿using TMPro;
+﻿using Faraway.Pixel.Actor.Contracts;
+using TMPro;
 using UnityEngine;
 
 namespace Faraway.Pixel.Actors
 {
-    public class HUDView : MonoBehaviour
+    public class HUDView : MonoBehaviour, IHUDView
     {
         [SerializeField]
         private TMP_Text amountCollectedText;

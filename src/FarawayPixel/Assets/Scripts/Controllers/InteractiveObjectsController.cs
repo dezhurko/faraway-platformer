@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using Faraway.Pixel.Actors;
+using Faraway.Pixel.Actor.Contracts;
 using Faraway.Pixel.Entities.Interaction;
-using InteractiveObject = Faraway.Pixel.Actors.InteractiveObject;
 
 namespace Faraway.Pixel.Controllers
 {
@@ -10,7 +9,7 @@ namespace Faraway.Pixel.Controllers
         private readonly InteractiveObjectFactory interactiveObjectFactory;
         
         public InteractiveObjectsController(
-            IEnumerable<InteractiveObject> interactiveObjects, 
+            IEnumerable<IInteractiveObject> interactiveObjects, 
             InteractiveObjectFactory interactiveObjectFactory)
         {
             this.interactiveObjectFactory = interactiveObjectFactory;

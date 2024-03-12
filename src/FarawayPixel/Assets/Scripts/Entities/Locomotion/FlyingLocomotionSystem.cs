@@ -9,8 +9,10 @@ namespace Faraway.Pixel.Entities.Locomotion
         private bool isGrounded;
         private float moveDirection;
         
-        public FlyingLocomotionSystem(ILocomotionActor actor, ISpeedFactorProvider speedFactorProvider) 
-            : base(actor, speedFactorProvider)
+        public override LocomotionActorState ActorState => LocomotionActorState.Fly;
+        
+        public FlyingLocomotionSystem(ILocomotionActor actor, LocomotionParameters locomotionParameters) 
+            : base(actor, locomotionParameters)
         {
         }
 
@@ -22,8 +24,8 @@ namespace Faraway.Pixel.Entities.Locomotion
             }
 
             Actor.Velocity = new Vector2(
-                moveDirection * Speed * SpeedFactorProvider.SpeedFactor, 
-                input.Vertical * Speed * SpeedFactorProvider.SpeedFactor);
+                moveDirection * Speed * LocomotionParameters.SpeedFactor, 
+                input.Vertical * Speed * LocomotionParameters.SpeedFactor);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Faraway.Pixel.Entities.Buffs
         {
             return data switch
             {
-                SpeedBuffData  speedBuffData => new SpeedBuff(speedBuffData, player),
+                SpeedBuffData  speedBuffData => new SpeedBuff(speedBuffData, player.LocomotionParameters),
                 FlyingBuffData  flyingBuffData => new FlyingBuff(flyingBuffData, locomotionActor, player),
                 _ => throw new InvalidOperationException($"Can't create Buff for the data '{data.GetType()}'.")
             };

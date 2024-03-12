@@ -19,7 +19,7 @@ namespace Faraway.Pixel.Entities.Buffs
             Debug.Log("Flying Buff: Set flying movement system as active.");
             
             base.Apply(time);
-            var locomotion = new FlyingLocomotionSystem(locomotionActor, player);
+            var locomotion = new FlyingLocomotionSystem(locomotionActor, player.LocomotionParameters);
             player.SetLocomotion(locomotion);
         }
 
@@ -27,7 +27,7 @@ namespace Faraway.Pixel.Entities.Buffs
         {
             Debug.Log("Flying Buff: Reset movement system to default.");
             
-            var locomotion = new DefaultLocomotionSystem(locomotionActor, player);
+            var locomotion = new DefaultLocomotionSystem(locomotionActor, player.LocomotionParameters);
             player.SetLocomotion(locomotion);
         }
     }

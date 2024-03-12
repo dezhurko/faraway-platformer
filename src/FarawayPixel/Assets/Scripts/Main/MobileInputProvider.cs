@@ -1,8 +1,9 @@
-﻿using Faraway.Pixel.Actors.UI;
+﻿using Faraway.Pixel.Actors;
+using Faraway.Pixel.Controllers;
 using Faraway.Pixel.Entities.Locomotion;
 using UnityEngine;
 
-namespace Faraway.Pixel.Controllers
+namespace Faraway.Pixel.Main
 {
     public class MobileInputProvider : IInputProvider
     {

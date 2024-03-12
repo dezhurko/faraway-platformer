@@ -3,7 +3,8 @@
     "rootNamespace": "Faraway.Pixel",
     "references": [
         "GUID:45f2b8c8a25db4e01952a50f6fea1d99",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:172649a234164d14b9aba41544d1709c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

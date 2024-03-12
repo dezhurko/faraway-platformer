@@ -1,3 +1,4 @@
+using Faraway.Pixel.Actor.Contracts;
 using Faraway.Pixel.Entities.Locomotion;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace Faraway.Pixel.Actors
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
-    public class PlayerActor : MonoBehaviour, ILocomotionActor
+    public class PlayerActor : MonoBehaviour, ILocomotionActor, IPlayerAnimator
     {
         private const float GroundCheckRadius = 0.1f;
         

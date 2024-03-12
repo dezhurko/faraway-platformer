@@ -20,7 +20,7 @@ namespace Faraway.Pixel.Entities.Tests
         public void Initialize()
         {
             player = new Player();
-            player.SetLocomotion(new DefaultLocomotionSystem(locomotionActor, player));
+            player.SetLocomotion(new DefaultLocomotionSystem(locomotionActor, player.LocomotionParameters));
             locomotionActor = Substitute.For<ILocomotionActor>();
             timeProvider = Substitute.For<ITimeProvider>();
             timeProvider.Now.Returns(0);

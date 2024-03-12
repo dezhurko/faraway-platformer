@@ -1,14 +1,14 @@
-﻿using Faraway.Pixel.Actors;
+﻿using Faraway.Pixel.Actor.Contracts;
 using Faraway.Pixel.Entities;
 
 namespace Faraway.Pixel.Controllers
 {
     public class HUDController
     {
-        private HUDView view;
-        private Player player;
+        private readonly IHUDView view;
+        private readonly Player player;
         
-        public HUDController(HUDView view, Player player)
+        public HUDController(IHUDView view, Player player)
         {
             this.view = view;
             this.player = player;
@@ -19,7 +19,7 @@ namespace Faraway.Pixel.Controllers
 
         private void UpdateView()
         {
-            view.SetAmountCollectedText($"{player.CollectedItemsCount}/{player.TotalItemsCount}");
+            view.SetAmountCollectedText($"{player.CollectedItemsCount}|{player.TotalItemsCount}");
         }
     }
 }

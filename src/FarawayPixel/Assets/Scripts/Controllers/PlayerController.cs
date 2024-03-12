@@ -1,5 +1,5 @@
 using System;
-using Faraway.Pixel.Actors;
+using Faraway.Pixel.Actor.Contracts;
 using Faraway.Pixel.Entities;
 using Faraway.Pixel.Entities.Locomotion;
 using UnityEngine;
@@ -8,15 +8,21 @@ namespace Faraway.Pixel.Controllers
 {
     public class PlayerController
     {
-        private readonly PlayerActor playerActor;
+        private readonly IPlayerAnimator playerAnimator;
+        private readonly ILocomotionActor playerLocomotionActor;
         private readonly Player player;
         private readonly IInputProvider inputProvider;
 
-        private AnimationState previousAnimationState;
+        private LocomotionActorState previousLocomotionActorState;
 
-        public PlayerController(PlayerActor playerActor, Player player, IInputProvider inputProvider)
+        public PlayerController(
+            IPlayerAnimator playerAnimator, 
+            ILocomotionActor playerLocomotionActor, 
+            IInputProvider inputProvider, 
+            Player player)
         {
-            this.playerActor = playerActor;
+            this.playerAnimator = playerAnimator;
+            this.playerLocomotionActor = playerLocomotionActor;
             this.player = player;
             this.inputProvider = inputProvider;
         }
@@ -25,53 +31,42 @@ namespace Faraway.Pixel.Controllers
         {
             var input = inputProvider.GetInput();
             player.Locomotion.Update(input);
-            var isFlying = player.Locomotion is FlyingLocomotionSystem;
-            UpdateFlipState(isFlying);
-            UpdateAnimation(isFlying);
+            UpdateFlipState();
+            UpdateAnimation();
         }
 
-        private void UpdateFlipState(bool isFlying)
+        private void UpdateFlipState()
         {
-            if (Mathf.Abs(playerActor.Velocity.x) > Mathf.Epsilon)
+            if (Mathf.Abs(playerLocomotionActor.Velocity.x) > Mathf.Epsilon)
             {
-                playerActor.FlipHorizontal(isFlying ? playerActor.Velocity.x > 0 : playerActor.Velocity.x < 0);
+                playerAnimator.FlipHorizontal(playerLocomotionActor.Velocity.x < 0);
             }
         }
 
-        private void UpdateAnimation(bool isFlying)
+        private void UpdateAnimation()
         {
-            var currentAnimationState = isFlying
-                ? AnimationState.Fly
-                : Mathf.Abs(playerActor.Velocity.x) > Mathf.Epsilon ? AnimationState.Run : AnimationState.Idle;
-
-            if (previousAnimationState == currentAnimationState)
+            var currentLocomotionActorState = player.Locomotion.ActorState;
+            if (previousLocomotionActorState == currentLocomotionActorState)
             {
                 return;
             }
             
-            switch (currentAnimationState)
+            switch (currentLocomotionActorState)
             {
-                case AnimationState.Idle:
-                    playerActor.PlayIdleAnimation();
+                case LocomotionActorState.Idle:
+                    playerAnimator.PlayIdleAnimation();
                     break;
-                case AnimationState.Run:
-                    playerActor.PlayRunAnimation();
+                case LocomotionActorState.Run:
+                    playerAnimator.PlayRunAnimation();
                     break;
-                case AnimationState.Fly:
-                    playerActor.PlayFlyAnimation();
+                case LocomotionActorState.Fly:
+                    playerAnimator.PlayFlyAnimation();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
 
-            previousAnimationState = currentAnimationState;
-        }
-
-        private enum AnimationState
-        {
-            Idle,
-            Run,
-            Fly,
+            previousLocomotionActorState = currentLocomotionActorState;
         }
     }
 }

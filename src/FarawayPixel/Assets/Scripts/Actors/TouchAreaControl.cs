@@ -1,10 +1,11 @@
 using System;
+using Faraway.Pixel.Actor.Contracts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace Faraway.Pixel.Actors.UI
+namespace Faraway.Pixel.Actors
 {
-    public class TouchAreaControl : MonoBehaviour, IPointerDownHandler
+    public class TouchAreaControl : MonoBehaviour, IPointerDownHandler, ITouchAreaControl
     {
         public event Action Touch;
 

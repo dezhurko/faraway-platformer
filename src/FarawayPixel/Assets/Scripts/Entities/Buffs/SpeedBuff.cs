@@ -5,14 +5,14 @@ namespace Faraway.Pixel.Entities.Buffs
 {
     public class SpeedBuff : Buff
     {
-        private readonly Player player;
+        private readonly LocomotionParameters locomotionParameters;
         
         private float speedFactor;
         
-        public SpeedBuff(SpeedBuffData data, Player player) : base(data)
+        public SpeedBuff(SpeedBuffData data, LocomotionParameters locomotionParameters) : base(data)
         {
             speedFactor = data.SpeedChangeFactor;
-            this.player = player;
+            this.locomotionParameters = locomotionParameters;
         }
         
         public override void Apply(float time)
@@ -20,14 +20,14 @@ namespace Faraway.Pixel.Entities.Buffs
             Debug.Log($"Speed Buff: Changing player speed to {speedFactor}.");
             
             base.Apply(time);
-            player.ChangeSpeed(speedFactor);
+            locomotionParameters.ChangeSpeed(speedFactor);
         }
 
         public override void Discard()
         {
             Debug.Log("Speed Buff: Resetting player speed.");
             
-            player.ResetSpeed();
+            locomotionParameters.ResetSpeed();
         }
 
         public override void Combine(Buff other, float currentTime)
@@ -39,7 +39,7 @@ namespace Faraway.Pixel.Entities.Buffs
             
             EndTime = currentTime + other.Duration;
             speedFactor = ((SpeedBuff)other).speedFactor;
-            player.ChangeSpeed(speedFactor);
+            locomotionParameters.ChangeSpeed(speedFactor);
             
             Debug.Log($"Buff {other.GetType()} was combined with another active buff. " +
                       $"Speed factor {speedFactor}, end time: {EndTime}");

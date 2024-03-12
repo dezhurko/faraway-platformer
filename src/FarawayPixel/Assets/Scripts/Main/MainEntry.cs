@@ -1,12 +1,12 @@
 using Faraway.Pixel.Actors;
-using Faraway.Pixel.Actors.UI;
+using Faraway.Pixel.Controllers;
 using Faraway.Pixel.Entities;
 using Faraway.Pixel.Entities.Buffs;
 using Faraway.Pixel.Entities.Interaction;
 using Faraway.Pixel.Entities.Locomotion;
 using UnityEngine;
 
-namespace Faraway.Pixel.Controllers
+namespace Faraway.Pixel.Main
 {
     public class MainEntry : MonoBehaviour
     {
@@ -42,14 +42,14 @@ namespace Faraway.Pixel.Controllers
         private void Initialize()
         {
             var player = new Player();
-            var locomotion = new DefaultLocomotionSystem(playerActor, player);
+            var locomotion = new DefaultLocomotionSystem(playerActor, player.LocomotionParameters);
             player.SetLocomotion(locomotion);
             buffCollection = new BuffCollection(new TimeProvider());
             var buffFactory = new BuffFactory(player, playerActor);
             var interactiveObjectFactory = new InteractiveObjectFactory(buffCollection, buffFactory, player);
             _ = new InteractiveObjectsController(interactiveObjects.Objects, interactiveObjectFactory);
             var input = CreateInputProvider();
-            playerController = new PlayerController(playerActor, player, input);
+            playerController = new PlayerController(playerActor, playerActor, input, player);
             _ = new HUDController(hudView, player);
         }
 

@@ -12,14 +12,14 @@ namespace Faraway.Pixel.Entities.Tests
         private const float BuffDuration2 = 1f;
         private const float Epsilon = 0.001f;
 
-        private Player player;
+        private LocomotionParameters locomotionParameters;
         private ITimeProvider timeProvider;
         private BuffCollection buffCollection;
 
         [SetUp]
         public void Initialize()
         {
-            player = new Player();
+            locomotionParameters = new LocomotionParameters();
             timeProvider = Substitute.For<ITimeProvider>();
             timeProvider.Now.Returns(0);
             buffCollection = new BuffCollection(timeProvider);
@@ -33,7 +33,7 @@ namespace Faraway.Pixel.Entities.Tests
             timeProvider.Now.Returns(BuffDuration1 - Epsilon);
             buffCollection.Update();
             
-            Assert.AreEqual(SpeedChangeFactor1, player.SpeedFactor);
+            Assert.AreEqual(SpeedChangeFactor1, locomotionParameters.SpeedFactor);
         }
         
         [Test]
@@ -44,7 +44,7 @@ namespace Faraway.Pixel.Entities.Tests
             timeProvider.Now.Returns(BuffDuration1 + Epsilon);
             buffCollection.Update();
             
-            Assert.AreEqual(Player.DefaultSpeedFactor, player.SpeedFactor);
+            Assert.AreEqual(LocomotionParameters.DefaultSpeedFactor, locomotionParameters.SpeedFactor);
         }
         
         [Test]
@@ -60,7 +60,7 @@ namespace Faraway.Pixel.Entities.Tests
             timeProvider.Now.Returns(timeProvider.Now + BuffDuration2 - Epsilon);
             buffCollection.Update();
             
-            Assert.AreEqual(SpeedChangeFactor2, player.SpeedFactor);
+            Assert.AreEqual(SpeedChangeFactor2, locomotionParameters.SpeedFactor);
         }
         
         [Test]
@@ -76,13 +76,13 @@ namespace Faraway.Pixel.Entities.Tests
             timeProvider.Now.Returns(timeProvider.Now + BuffDuration2 + Epsilon);
             buffCollection.Update();
             
-            Assert.AreEqual(Player.DefaultSpeedFactor, player.SpeedFactor);
+            Assert.AreEqual(LocomotionParameters.DefaultSpeedFactor, locomotionParameters.SpeedFactor);
         }
 
         private SpeedBuff CreateSpeedBuff(float speedFactor, float duration)
         {
             var data = new SpeedBuffData(speedFactor, duration);
-            var buff = new SpeedBuff(data, player);
+            var buff = new SpeedBuff(data, locomotionParameters);
             return buff;
         }
     }

@@ -1,7 +1,8 @@
+using Faraway.Pixel.Controllers;
 using Faraway.Pixel.Entities.Locomotion;
 using UnityEngine;
 
-namespace Faraway.Pixel.Controllers
+namespace Faraway.Pixel.Main
 {
     public class DesktopInputProvider : IInputProvider
     {
