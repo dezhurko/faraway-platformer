@@ -1,3 +1,4 @@
+using System;
 using Faraway.Pixel.Entities.Locomotion;
 
 namespace Faraway.Pixel.Entities
@@ -10,7 +11,13 @@ namespace Faraway.Pixel.Entities
 
         public float SpeedFactor => speedFactor;
 
+        public int CollectedItemsCount { get; private set; }
+
+        public int TotalItemsCount { get; } = 10;
+
         public LocomotionSystem Locomotion { get; private set; }
+
+        public event Action<int> ItemCollected;
 
         public void ChangeSpeed(float factor)
         {
@@ -25,6 +32,12 @@ namespace Faraway.Pixel.Entities
         public void SetLocomotion(LocomotionSystem locomotion)
         {
             Locomotion = locomotion;
+        }
+
+        public void CollectItem(int amount)
+        {
+            CollectedItemsCount += amount;
+            ItemCollected?.Invoke(amount);
         }
     }
 }

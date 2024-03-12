@@ -15,6 +15,9 @@ namespace Faraway.Pixel.Controllers
 
         [SerializeField]
         private PlayerActor playerActor;
+        
+        [SerializeField]
+        private HUDView hudView;
 
         [SerializeField]
         private FloatingJoystick joystick;
@@ -43,10 +46,11 @@ namespace Faraway.Pixel.Controllers
             player.SetLocomotion(locomotion);
             buffCollection = new BuffCollection(new TimeProvider());
             var buffFactory = new BuffFactory(player, playerActor);
-            var interactiveObjectFactory = new InteractiveObjectFactory(buffCollection, buffFactory);
+            var interactiveObjectFactory = new InteractiveObjectFactory(buffCollection, buffFactory, player);
             _ = new InteractiveObjectsController(interactiveObjects.Objects, interactiveObjectFactory);
             var input = CreateInputProvider();
             playerController = new PlayerController(playerActor, player, input);
+            _ = new HUDController(hudView, player);
         }
 
         private IInputProvider CreateInputProvider()
