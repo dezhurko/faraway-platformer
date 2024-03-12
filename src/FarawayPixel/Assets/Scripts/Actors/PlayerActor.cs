@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Faraway.Pixel.Actors
 {
+    /// <summary>
+    /// Represents the player character in the game.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Animator))]
@@ -24,6 +27,7 @@ namespace Faraway.Pixel.Actors
         private readonly int idleTrigger = Animator.StringToHash("Idle");
         private readonly int flyTrigger = Animator.StringToHash("Fly");
 
+        /// <inheritdoc/>
         public Vector3 Velocity 
         {
             get => playerRigidbody.velocity;
@@ -37,15 +41,20 @@ namespace Faraway.Pixel.Actors
             playerAnimator = GetComponent<Animator>();
         }
 
+        /// <inheritdoc/>
         public bool IsGrounded() =>
             Physics2D.OverlapCircle(groundCheck.position, GroundCheckRadius, groundLayer);
 
+        /// <inheritdoc/>
         public void PlayRunAnimation() => playerAnimator.SetTrigger(runTrigger);
         
+        /// <inheritdoc/>
         public void PlayIdleAnimation() => playerAnimator.SetTrigger(idleTrigger);
         
+        /// <inheritdoc/>
         public void PlayFlyAnimation() => playerAnimator.SetTrigger(flyTrigger);
         
+        /// <inheritdoc/>
         public void FlipHorizontal(bool flip) => playerSpriteRenderer.flipX = flip;
     }
 }

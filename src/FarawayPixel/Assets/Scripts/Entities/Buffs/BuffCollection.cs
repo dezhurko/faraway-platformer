@@ -3,18 +3,27 @@ using UnityEngine.Pool;
 
 namespace Faraway.Pixel.Entities.Buffs
 {
+    /// <summary>
+    /// Represents a collection of active buffs.
+    /// </summary>
     public class BuffCollection
     {
         private readonly List<Buff> activeBuffs = new ();
         private readonly ITimeProvider timeProvider;
 
-        public IReadOnlyList<Buff> ActiveBuffs => activeBuffs;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BuffCollection"/> class.
+        /// </summary>
+        /// <param name="timeProvider">Time provider.</param>
         public BuffCollection(ITimeProvider timeProvider)
         {
             this.timeProvider = timeProvider;
         }
 
+        /// <summary>
+        /// Adds a buff to the collection.
+        /// </summary>
+        /// <param name="buff">Buff to add.</param>
         public void AddBuff(Buff buff)
         {
             var wasCombined = false;
@@ -35,6 +44,9 @@ namespace Faraway.Pixel.Entities.Buffs
             }
         }
         
+        /// <summary>
+        /// Updates the collection. Must be executed in the game loop.
+        /// </summary>
         public void Update()
         {
             var staleBuffs = ListPool<Buff>.Get();

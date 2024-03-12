@@ -3,12 +3,18 @@ using Faraway.Pixel.Entities.Buffs;
 
 namespace Faraway.Pixel.Entities.Interaction
 {
+    /// <summary>
+    /// Represents an interactive object factory for creating interactive objects based on their data..
+    /// </summary>
     public class InteractiveObjectFactory
     {
         private readonly BuffCollection buffCollection;
         private readonly BuffFactory buffFactory;
         private readonly Player player;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InteractiveObjectFactory"/> class.
+        /// </summary>
         public InteractiveObjectFactory(BuffCollection buffCollection, BuffFactory buffFactory, Player player)
         {
             this.buffCollection = buffCollection;
@@ -16,6 +22,9 @@ namespace Faraway.Pixel.Entities.Interaction
             this.player = player;
         }
 
+        /// <summary>
+        /// Creates an interactive object based on the data.
+        /// </summary>
         public InteractiveObject CreateInteractiveObject(InteractiveObjectData data)
         {
             return data switch

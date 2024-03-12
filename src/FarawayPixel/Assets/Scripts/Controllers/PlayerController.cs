@@ -6,6 +6,9 @@ using UnityEngine;
 
 namespace Faraway.Pixel.Controllers
 {
+    /// <summary>
+    /// Represents the controller for the player character.
+    /// </summary>
     public class PlayerController
     {
         private readonly IPlayerAnimator playerAnimator;
@@ -15,6 +18,13 @@ namespace Faraway.Pixel.Controllers
 
         private LocomotionActorState previousLocomotionActorState;
 
+        /// <summary>
+        /// Constructor for the PlayerController.
+        /// </summary>
+        /// <param name="playerAnimator">Player animator implementation.</param>
+        /// <param name="playerLocomotionActor">Player locomotion implementation.</param>
+        /// <param name="inputProvider">User input provide.</param>
+        /// <param name="player">Player entity instance.</param>
         public PlayerController(
             IPlayerAnimator playerAnimator, 
             ILocomotionActor playerLocomotionActor, 
@@ -27,6 +37,9 @@ namespace Faraway.Pixel.Controllers
             this.inputProvider = inputProvider;
         }
 
+        /// <summary>
+        /// Update the controller. Must be executed in the game loop.
+        /// </summary>
         public void Update()
         {
             var input = inputProvider.GetInput();

@@ -4,6 +4,9 @@ using NUnit.Framework;
 
 namespace Faraway.Pixel.Entities.Tests
 {
+    /// <summary>
+    /// Represents the speed buff tests.
+    /// </summary>
     public class SpeedBuffTests
     {
         private const float SpeedChangeFactor1 = 1f;

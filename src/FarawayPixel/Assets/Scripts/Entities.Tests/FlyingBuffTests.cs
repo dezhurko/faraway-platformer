@@ -5,6 +5,9 @@ using NUnit.Framework;
 
 namespace Faraway.Pixel.Entities.Tests
 {
+    /// <summary>
+    /// Represents the flying buff tests.
+    /// </summary>
     public class FlyingBuffTests
     {
         private Player player;

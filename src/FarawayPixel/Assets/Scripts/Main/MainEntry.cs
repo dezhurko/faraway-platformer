@@ -8,6 +8,10 @@ using UnityEngine;
 
 namespace Faraway.Pixel.Main
 {
+    /// <summary>
+    /// Represents the main entry point of the game. It is where all dependencies are resolved and the game is started.
+    /// In a production environment, this class would be replaced with a dependency injection framework like Zenject or VContainer.
+    /// </summary>
     public class MainEntry : MonoBehaviour
     {
         [SerializeField]
@@ -47,7 +51,7 @@ namespace Faraway.Pixel.Main
             buffCollection = new BuffCollection(new TimeProvider());
             var buffFactory = new BuffFactory(player, playerActor);
             var interactiveObjectFactory = new InteractiveObjectFactory(buffCollection, buffFactory, player);
-            _ = new InteractiveObjectsController(interactiveObjects.Objects, interactiveObjectFactory);
+            _ = new InteractiveObjectsController(interactiveObjects, interactiveObjectFactory);
             var input = CreateInputProvider();
             playerController = new PlayerController(playerActor, playerActor, input, player);
             _ = new HUDController(hudView, player);
