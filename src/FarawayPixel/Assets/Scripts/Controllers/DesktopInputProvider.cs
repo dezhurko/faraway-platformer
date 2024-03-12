@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Faraway.Pixel.Controllers
 {
-    public class InputProvider : IInputProvider
+    public class DesktopInputProvider : IInputProvider
     {
         public UserInput GetInput()
         {

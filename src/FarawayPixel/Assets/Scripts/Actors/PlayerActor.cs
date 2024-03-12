@@ -21,6 +21,7 @@ namespace Faraway.Pixel.Actors
 
         private readonly int runTrigger = Animator.StringToHash("Run");
         private readonly int idleTrigger = Animator.StringToHash("Idle");
+        private readonly int flyTrigger = Animator.StringToHash("Fly");
 
         public Vector3 Velocity 
         {
@@ -42,6 +43,8 @@ namespace Faraway.Pixel.Actors
         
         public void PlayIdleAnimation() => playerAnimator.SetTrigger(idleTrigger);
         
-        public void FlipHorizontal(bool flip) => playerSpriteRenderer.flipX = flip; 
+        public void PlayFlyAnimation() => playerAnimator.SetTrigger(flyTrigger);
+        
+        public void FlipHorizontal(bool flip) => playerSpriteRenderer.flipX = flip;
     }
 }
