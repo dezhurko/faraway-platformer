@@ -1,3 +1,25 @@
+# Управление
+
+**На клавиатуре**<br>
+* _A_ : влево<br>
+* _D_ : вправо<br>
+* _W_ : вверх<br>
+* _S_ : вниз<br>
+* _space_ : прыжок<br>
+
+**На тачскрине**<br>
+* джойстик слева : влево, вправо, вверх, вниз<br>
+* тап српава : прыжок
+
+# Правила
+Для большего интереса я немного изменил правила и времена действия баффов.
+
+![Strawberry](https://github.com/dezhurko/faraway-platformer/assets/7524653/15859bc0-220a-4381-aa3c-eb56c43d511c) : ускоряет персонажа на 10 секунд<br>
+![Pineapple](https://github.com/dezhurko/faraway-platformer/assets/7524653/c3f1664e-75ce-4732-ba29-8e3a533bb3f9) : замедляет на 5 секунд<br>
+![Bananas](https://github.com/dezhurko/faraway-platformer/assets/7524653/2feb8d0b-946f-4cb5-9c7d-8fd496931a2e) : позволяет летать 6 секунд<br>
+
+Задача: собрать 10 ![Cherries](https://github.com/dezhurko/faraway-platformer/assets/7524653/3aad987d-95ff-4ffb-847b-702a26c77bc6)<br>
+
 # Общая архитектура проекта
 
 Общая архитектура проекта базируется на модифицированном паттерне MVC. Ниже представлена общая структура проекта и связи между ее частями.
