@@ -24,7 +24,7 @@
 
 *Рис 2. Диаграмма классов для реализации логики интерактивных обектов на сцене.*
 
-![InteractiveObjects](https://github.com/dezhurko/faraway-platformer/assets/7524653/8df9d9f2-b3f9-47b8-b7ac-c917102b4b41)
+![Buffs](https://github.com/dezhurko/faraway-platformer/assets/7524653/a49a0b50-fad2-414a-8fb5-0341a3707745)
 
 *Рис 3. Диаграмма классов описывающий принцип работы системы бафов и дебафов.*
 
