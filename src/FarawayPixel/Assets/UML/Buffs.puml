@@ -1,0 +1,73 @@
+﻿@startuml
+class "Buff" as buff {
+}
+
+class "SpeedBuff" as speedBuff {
+}
+buff <|-- speedBuff : Inheritance
+speedBuff..>speedBuffData : Uses
+
+class "FlyingBuff" as flyingBuff {
+}
+buff <|-- flyingBuff : Inheritance
+flyingBuff..>flyingBuffData : Uses
+
+class "BuffData" as buffData {
+}
+
+class "SpeedBuffData" as speedBuffData {
+}
+buffData <|-- speedBuffData : Inheritance
+
+class "FlyingBuffData" as flyingBuffData {
+}
+buffData <|-- flyingBuffData : Inheritance
+
+class "BuffCollection" as buffCollection {
+    -Buff[] buffs
+    +void AddBuff(Buff buff)
+    +void RemoveBuff(Buff buff)
+}
+
+class "BuffFactory" as buffFactory {
+    +Buff CreateBuff(BuffData data)
+}
+
+buffFactory ..> buff : Uses
+buffFactory ..> buffData : Uses
+buffCollection o-- buff : Aggregation
+
+abstract class "InteractiveObjectData" as interactiveObjectData {
+}
+
+class "BuffInteractiveObjectData" as buffInteractiveObjectData {
+}
+interactiveObjectData <|-- buffInteractiveObjectData : Inheritance
+buffInteractiveObjectData ..> buffData : Uses
+
+class "CollectableObjectData" as collectableObjectData {
+}
+interactiveObjectData <|-- collectableObjectData : Inheritance
+
+abstract class "InteractiveObject" as interactiveObject {
+    +void Interact()
+}
+interactiveObject ..> interactiveObjectData : Uses
+
+class "BuffInteractiveObject" as buffInteractiveObject {
+}
+interactiveObject <|-- buffInteractiveObject : Inheritance
+buffInteractiveObject ..> buffInteractiveObjectData : Uses
+buffInteractiveObject ..> buffFactory : Uses
+
+class "CollectableInteractiveObject" as collectableInteractiveObject {
+}
+interactiveObject <|-- collectableInteractiveObject : Inheritance
+collectableInteractiveObject ..> collectableObjectData : Uses
+
+class "InteractiveObjectFactory" as interactiveObjectFactory {
+    +InteractiveObject CreateInteractiveObject(InteractiveObjectData data)
+}
+
+interactiveObjectFactory ..> interactiveObject : Uses
+@enduml

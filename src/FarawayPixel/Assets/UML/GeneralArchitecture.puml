@@ -1,0 +1,12 @@
+﻿@startuml
+component "Actors" as actors
+component "Actors.Contracts" as contracts
+component "Entities" as entities
+component "Controllers" as controllers
+
+controllers --> contracts : uses
+controllers -> entities : uses
+actors --|> contracts : implements
+actors --> entities : uses
+contracts --> entities : uses
+@enduml
